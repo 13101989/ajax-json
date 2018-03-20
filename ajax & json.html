@@ -230,19 +230,60 @@
 					var today5String = today5.getDate()+ "/" + ((today5.getMonth()+1<10)?"0":"") + (today5.getMonth()+1) + "/" + today5.getFullYear();
 
 					
-					var str1= `<div class="containerPrognoza">
+					
+					 str1= `<div class="containerPrognoza">
 									<div class="zi">Ziua: ${todayString}</div>
 									<div class="zi">Ziua: ${today1String}</div>
 									<div class="zi">Ziua: ${today2String}</div>
 									<div class="zi">Ziua: ${today3String}</div>
 									<div class="zi">Ziua: ${today4String}</div>
-									<div class="zi">Ziua: ${today5String}</div>`
+									<div class="zi">Ziua: ${today5String}</div>
+									`
 					
+					var zi = prognoza.list[0].dt_txt[11] + prognoza.list[0].dt_txt[12];
 
-					 for(var i in prognoza.list){
+					       if (parseInt(zi) === 03) {
+					 	str1 += `<div class="item"></div>`
+					 }else if (parseInt(zi) === 06){
+					 	str1 += `<div class="item"></div>
+					 			<div class="item"></div>`
+					 }else if (parseInt(zi) === 09){
+					 	str1 += `<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>`
+					 }else if (parseInt(zi) === 12){
+					 	str1 += `<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>`
+					 }else if (parseInt(zi) === 15){
+					 	str1 += `<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>`
+					 }else if (parseInt(zi) === 18){
+					 	str1 += `<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>`
+					 }else if (parseInt(zi) === 21){
+					 	str1 += `<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>
+					 			<div class="item"></div>`
+					 }
+					 
+
+
+ 					 for(var i in prognoza.list){
 					 for(var j in prognoza.list[i].weather){
 
-					 
 					 
 					 var ora = prognoza.list[i].dt_txt[11] + prognoza.list[i].dt_txt[12] + prognoza.list[i].dt_txt[13] + prognoza.list[i].dt_txt[14] + prognoza.list[i].dt_txt[15];
 					 
@@ -259,16 +300,9 @@
 							
 						}}
 
-
+						
 					document.querySelector(".containerPrognoza").innerHTML=str1;
-					
-					var zi = prognoza.list[i].dt_txt[8] + prognoza.list[i].dt_txt[9];
 
-					 if (parseInt(zi) === parseInt(today)) {}
-					
-
-					 console.log (today.getDate());
-					 console.log(zi);
 
 				}}
 			xhttp.open("GET", url);
